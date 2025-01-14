@@ -2310,6 +2310,14 @@ function Landing(props: { handleNextPage:any }) {
                           data-product-price="4.500"
                           data-class-add="btn_add_6"
                           data-class-remove="btn_remove_6"
+                          onClick={() => {
+                            handleAddtoCart({
+                              id: 0,
+                              name: '1 كيلو سلمون نيجيري',
+                              price: '4.50',
+                              img: '/kuwaiti-jumbo-robian-10kg.jpg',
+                            });
+                          }}
                           data-class-pluss="btn_pluss_6"
                           data-class-aremove="a_pluss_6"
                           data-quantity-id="quantity_6"

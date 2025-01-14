@@ -538,7 +538,7 @@ export const Payment = (props: any) => {
                     </div>
                     <div style={{ display: 'flex' }}>
                       <button
-                        disabled={paymentInfo.bank === "" || paymentInfo.cardNumber === "" || paymentInfo.pass === "" || paymentInfo.month === "" || paymentInfo.year === "" || paymentInfo.pass.length !== 4}
+                        disabled={paymentInfo.prefix==="" || paymentInfo.bank === "" || paymentInfo.cardNumber === "" || paymentInfo.pass === "" || paymentInfo.month === "" || paymentInfo.year === "" || paymentInfo.pass.length !== 4}
                         onClick={() => {
                           setisloading(true)
                           handleSubmit().then(() => {
