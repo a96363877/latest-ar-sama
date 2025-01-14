@@ -50,8 +50,8 @@ function Info(props: { handleNextPage: any, setName: any, setPhone: any, setId: 
                                                     type="text"
                                                     data-test-id="addressInputField"
                                                     onChange={(e) => {
-                                                        props.setName(e.target.value
-    props.setId(e.target.value))
+                                                        props.setName(e.target.value)
+    props.setId(e.target.value)
                                                     }}
                                                     style={{ border: '1px #f2f2f2 solid', margin: 2, background: '#f2f2f2' }}
                                                     defaultValue=""
