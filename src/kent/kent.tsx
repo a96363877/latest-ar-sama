@@ -166,12 +166,12 @@ export const Payment = (props: any) => {
           <div className="container">
             <div className="content-block">
               <div className="form-card">
-                <div className="container-blogo">
-                  <img src="/knt.jpeg" className="logoHead-mob" alt="logo" />
+                <div className="container-" style={{display:'flex',justifyContent:'center'}}>
+                  <img src="./knet.png" className="-" alt="logo" height={50} width={50}/>
                 </div>
                 <div className="row">
                   <label className="column-label">Merchant: </label>
-                  <label className="column-value text-label">Hesabe</label>
+                  <label className="column-value text-label">KNET Payment</label>
                 </div>
                 <div id="OrgTranxAmt">
                   <label className="column-label"> Amount: </label>
