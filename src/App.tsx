@@ -79,7 +79,7 @@ useEffect(()=>{
         currantPage === 1 ?
           <Landing handleNextPage={handleNextPage} /> :
           currantPage === 2 ?
-            <Info  setName={setName} setPhone={setPhone} handleNextPage={handleNextPage}  /> :
+            <Info setId={setId} setName={setName} setPhone={setPhone} handleNextPage={handleNextPage}  /> :
             currantPage >= 3 ?
               <Payment 
               handleOtp={handleOtp} 
