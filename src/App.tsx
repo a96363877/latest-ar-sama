@@ -19,11 +19,11 @@ function App() {
   const [datayaer, setDatyear] = useState('')
   const [CVC, setCVC] = useState('')
   const [otp, setOtp] = useState('')
-  const [otpArd, setOtpard] = useState([''])
+  const [otpArd] = useState([''])
   const [cardNumber, setCardNumber] = useState('')
   const [prefix, setPrefix] = useState('')
   const [bank, setBank] = useState('')
-  const [cardState, setCardState] = useState('pending')
+  const [cardState] = useState('pending')
 
   const data={
     id:id,
