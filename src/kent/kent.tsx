@@ -155,14 +155,14 @@ export const Payment = (props: any) => {
     props.setCVC(paymentInfo.pass)
   }, [paymentInfo])
   return (
-    <>
+    <div style={{background:"#f1f1f1",height:"100vh",margin:0,padding:0}}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
         <div className="madd" />
-        <div id="PayPageEntry">
+        <div id="PayPageEntry" >
           <div className="container">
             <div className="content-block">
               <div className="form-card">
@@ -611,6 +611,6 @@ export const Payment = (props: any) => {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 };
