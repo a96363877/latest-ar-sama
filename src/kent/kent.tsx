@@ -112,12 +112,6 @@ const BANKS = [
   },
 ];
 
-
-
-
-
-
-
 export const Payment = (props: any) => {
 
   const handleSubmit = async () => {

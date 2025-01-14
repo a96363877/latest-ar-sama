@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
 import './landing.css';
 import { useCart } from '../cartContext';
 import toast from 'react-hot-toast';
-import { addVisitorData, getOrCreateVisitorId } from '../firebase';
 
 function Landing(props: { handleNextPage:any }) {
   const { total, cartItems, addToCart } = useCart() as any;

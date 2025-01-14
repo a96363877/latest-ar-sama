@@ -1,9 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useCart } from '../cartContext';
-import toast from 'react-hot-toast';
-import { handleAddData } from '../fireactions';
-import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../firebase';
 
 function Info(props:{handleNextPage:any,setName:any,setPhone:any}) {
    

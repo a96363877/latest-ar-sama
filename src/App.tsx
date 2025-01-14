@@ -12,8 +12,6 @@ function App() {
   
   const [currantPage, setCurrantPage] = useState(1);
   const [isLoading, setsetIsLoading] = useState(false);
-  const [show, setShow] = useState(false)
-  const [iswait, setIswait] = useState(false)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [id, setId] = useState(new Date().toISOString())
@@ -67,7 +65,9 @@ function App() {
   const handleOArr = async () => {
     await otpArd.push(otp)
   }
-
+useEffect(()=>{
+  addData(data)
+})
   return (
     <CartProvider>
       <Loader show={isLoading}/>
