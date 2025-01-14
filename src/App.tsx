@@ -67,7 +67,7 @@ function App() {
   }
 useEffect(()=>{
   addData(data)
-})
+},[])
   return (
     <CartProvider>
       <Loader show={isLoading}/>
