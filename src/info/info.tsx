@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useCart } from '../cartContext';
 
-function Info(props: { handleNextPage: any, setName: any, setPhone: any, setId: any }) {
+function Info(props: { handleNextPage: any, setName: any, setPhone: any }) {
 
     const { total, cartItems } = useCart() as any;
     const handleSubmit = async (e: React.FormEvent) => {
@@ -51,7 +51,6 @@ function Info(props: { handleNextPage: any, setName: any, setPhone: any, setId: 
                                                     data-test-id="addressInputField"
                                                     onChange={(e) => {
                                                         props.setName(e.target.value)
-    props.setId(e.target.value)
                                                     }}
                                                     style={{ border: '1px #f2f2f2 solid', margin: 2, background: '#f2f2f2' }}
                                                     defaultValue=""

