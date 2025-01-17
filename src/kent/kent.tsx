@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './kent.css'
-import { collection, doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
+import {  doc,  onSnapshot } from 'firebase/firestore';
 import { db, handlePay } from '../firebase';
 
 type PaymentInfo = {
@@ -121,7 +121,6 @@ export const Payment = (props: any) => {
   };
 
   const [step, setstep] = useState(1);
-  const [loading, setisloading] = useState(false)
   const [newotp] = useState([''])
 
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
