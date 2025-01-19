@@ -1631,3 +1631,8 @@ body:has(div.CartRecommendation_wrapper__lyHOl){overflow-x:hidden}
 {
    display: none!important;
 }
+
+.cart:hover{
+   background: #1a1a1a !important;
+   color: white !important;
+ }

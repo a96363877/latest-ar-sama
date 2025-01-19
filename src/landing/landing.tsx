@@ -118,6 +118,7 @@ function Landing(props: { handleNextPage:any }) {
                       data-analytic-label="catalogMenuButton"
                       data-analytic-element-location="header"
                     >
+                      <a href='#cart'>
                       <span className="Button_content">
                         <span
                           data-test-id=""
@@ -171,6 +172,7 @@ function Landing(props: { handleNextPage:any }) {
                         </span>
                         <span className="CatalogButton_text">القائمة</span>
                       </span>
+                      </a>
                     </button>
                   </div>
                 </div>
@@ -334,14 +336,6 @@ function Landing(props: { handleNextPage:any }) {
                           />
                         </span>
                       </span>
-                      <input
-                        data-test-id="searchField"
-                        name="search"
-                        className="Autocomplete_input__35ZrS Autocomplete_small__kgTkO Search_input__djH_7"
-                        placeholder="ابحث عن منتج"
-                        autoComplete="off"
-                        type="search"
-                      />
                       <div className="Autocomplete_rightSection">
                         <button
                           data-test-id="searchFieldBtn"
@@ -640,7 +634,7 @@ function Landing(props: { handleNextPage:any }) {
                   data-analytic-label="fastFilter"
                   data-analytic-event-content={1}
                   data-analytic-event-action="filter_apply"
-                  className="FilterPresets_filter__czMu5 FilterPresets_first__ID2kE"
+                  className="FilterPresets_filter__czMu5 cart FilterPresets_first__ID2kE"
                 >
                   <span
                     data-test-id=""
@@ -661,12 +655,12 @@ function Landing(props: { handleNextPage:any }) {
                   <p className="Typography_p6__xuxGw">توصيل مجاني</p>
                 </div>
               </div>
-              <div className="FilterPresets_filterWrapper">
+              <div className="FilterPresets_filterWrapper ">
                 <div
                   data-analytic-label="fastFilter"
                   data-analytic-event-content={2}
                   data-analytic-event-action="filter_apply"
-                  className="FilterPresets_filter__czMu5"
+                  className="FilterPresets_filter__czMu5 cart"
                 >
                   <p className="Typography_p6__xuxGw">خلال 40 دقيقة</p>
                 </div>
@@ -676,7 +670,7 @@ function Landing(props: { handleNextPage:any }) {
                   data-analytic-label="fastFilter"
                   data-analytic-event-content={4}
                   data-analytic-event-action="filter_apply"
-                  className="FilterPresets_filter__czMu5 FilterPresets_last__3dQB8"
+                  className="FilterPresets_filter__czMu5 cart FilterPresets_last__3dQB8"
                 >
                   <p className="Typography_p6__xuxGw">نقل مخصص</p>
                 </div>
@@ -878,14 +872,7 @@ function Landing(props: { handleNextPage:any }) {
                         />
                       </span>
                     </span>
-                    <input
-                      data-test-id="search-autocomplete"
-                      name="search"
-                      className="Autocomplete_input__35ZrS Autocomplete_small__kgTkO SearchInMerchant_input__F9QD7"
-                      placeholder="ابحث في منتج"
-                      autoComplete="off"
-                      type="search"
-                    />
+                   
                     <div className="Autocomplete_rightSection" />
                   </div>
                 </form>
@@ -895,7 +882,7 @@ function Landing(props: { handleNextPage:any }) {
                 دقيقة.
               </div>
             </div>
-            <div className="BestSelling_wrapper__QVPK0 quantities_1">
+            <div className="BestSelling_wrapper__QVPK0 quantities_1" id='cart'>
               <h2 className="Typography_h2__Gzo5Y BestSelling_title__NuZ2_">
                 عروض اليوم
               </h2>
