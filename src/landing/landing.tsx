@@ -1018,6 +1018,136 @@ function Landing(props: { handleNextPage:any }) {
                   </div>
                 </div>
                 <div className="pro_1">
+  <div
+    className="ProductCardVertical_wrapper__q1lzz BestSelling_first__or9rS"
+    data-id="kuwaiti-jumbo-robian-10kg"
+  >
+    <div className="CardProductImage_imageWrapper__0rzrL ProductCardVertical_image__B5TvN">
+      <span className="minus">
+        <img
+          alt="هامور طازج – طاولتك تستحق الأفضل!"
+          src="/hmo.jpg"
+          decoding="async"
+          data-nimg="fill"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            boxSizing: 'border-box',
+            padding: 0,
+            border: 'medium',
+            margin: 'auto',
+            display: 'block',
+            width: 0,
+            height: 0,
+            minWidth: '100%',
+            maxWidth: '100%',
+            minHeight: '100%',
+            maxHeight: '100%',
+            objectFit: 'cover',
+          }}
+        />
+        <noscript />
+      </span>
+    </div>
+    <div className="ProductCartVerticalDescription_info__0FmOx">
+      <h5 className="Typography_h5__MRrA0 ProductCartVerticalDescription_price__OtKd7">
+        4.99 د.ك
+      </h5>
+      <p className="Typography_p7  ProductCartVerticalDescription_name__M0ou9">
+        هامور طازج – طاولتك تستحق الأفضل!
+      </p>
+    </div>
+    <div className="a_pluss_1">
+      <a
+        type="button"
+        className="Button_button Button_secondary ProductButton_addButton__y5b_u ProductButton_secondary__qDYDR ProductButton_normal__jOR_t cd-add-to-cart js-cd-add-to-cart "
+        onClick={() => {
+          handleAddtoCart({
+            id: 0,
+            name: 'هامور طازج – طاولتك تستحق الأفضل!',
+            price: '4.99',
+            img: '/hma.jpg',
+          });
+        }}
+        data-product-id="product_1"
+        data-product-image="/ab.jpg"
+        data-product-name="هامور طازج – طاولتك تستحق الأفضل!"
+        data-price={4.99}
+        data-class-add="btn_add_1"
+        data-class-remove="btn_remove_1"
+        data-class-pluss="btn_pluss_1"
+        data-class-aremove="a_pluss_1"
+        data-quantity-id="quantity_1"
+        data-qquantity-id="qquantity_1"
+      >
+        <span className="Button_content btn_add_1">إضافة</span>
+        <div className="Loader_loader__4A5f1 Button_loader__I8AK4 btn_remove_1 d-none" />
+      </a>
+    </div>
+    <div className="defualt_1 ProductButton_productButton___1dmt ProductButton_secondary__qDYDR ProductButton_normal__jOR_t ProductCardHorizontal_productButton__aQoPQ btn_pluss_1  d-none ">
+      <a
+        className="updatecart"
+        data-type="minus"
+        data-product-id="product_1"
+        data-quantity-id="quantity_1"
+        data-defualt="defualt_1"
+        data-loadd="loadd_1"
+      >
+        <span
+          data-test-id=""
+          className="Icon_icon ProductButton_icon__XyfwX"
+        >
+          <span className="minus">
+            <img
+              className="asyncicon"
+              alt="icon"
+              decoding="async"
+              data-nimg="fill"
+              src="/minus.3902b821.svg"
+            />
+          </span>
+        </span>
+      </a>
+      <h5
+        id="qquantity_1"
+        className="Typography_h5__MRrA0 quantity_1"
+      >
+        0
+      </h5>
+      <a
+        className="updatecart"
+        data-type="plus"
+        data-product-id="product_1"
+        data-quantity-id="quantity_1"
+        data-defualt="defualt_1"
+        data-loadd="loadd_1"
+      >
+        <span
+          data-test-id=""
+          className="Icon_icon ProductButton_icon__XyfwX"
+        >
+          <span className="minus">
+            <img
+              alt="icon"
+              decoding="async"
+              data-nimg="fill"
+              className="asyncicon"
+              src="/plus.d7f13c1f.svg"
+            />
+          </span>
+        </span>
+      </a>
+    </div>
+    <div className="d-none loadd_1">
+      <a className="Button_button Button_secondary ProductButton_addButton__y5b_u ProductButton_secondary__qDYDR ProductButton_normal__jOR_t">
+        <div className="Loader_loader__4A5f1 Button_loader__I8AK4 btn_remove_1 " />
+      </a>
+    </div>
+  </div>
+</div>
+
+
+                <div className="pro_1">
                   <div
                     className="ProductCardVertical_wrapper__q1lzz BestSelling_first__or9rS"
                     data-id="kuwaiti-jumbo-robian-10kg"
